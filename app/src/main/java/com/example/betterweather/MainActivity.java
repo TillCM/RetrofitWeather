@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
 import android.Manifest;
+import android.content.pm.PackageManager;
 import android.graphics.ColorSpace;
 import android.os.Bundle;
 import android.os.Looper;
@@ -32,14 +33,11 @@ public class MainActivity extends AppCompatActivity {
     TabLayout tabLayout;
     Toolbar toolbar;
     ViewPager viewPager;
-    private static final int REQUEST_CODE =1;
+    private static final int REQUEST_CODE = 1;
 
     FusedLocationProviderClient fusedLocationProviderClient;
     LocationCallback locationCallback;
     LocationRequest locationRequest;
-
-
-
 
 
     @Override
@@ -54,19 +52,28 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
 
-        String [] permsToRequest = {Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION};
+        String[] permsToRequest = {Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION};
 
 
-        if (!Permission.hasPermissions(this,permsToRequest))
-        {
+        if (!Permission.hasPermissions(this, permsToRequest)) {
             ActivityCompat.requestPermissions(this, permsToRequest, REQUEST_CODE);
 
         }
 
 
-            buildLocationRequest();
-            buildLocationCallBack();
-           fusedLocationProviderClient.requestLocationUpdates(locationRequest,locationCallback,Looper.myLooper());
+        buildLocationRequest();
+        buildLocationCallBack();
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            return;
+        }
+        fusedLocationProviderClient.requestLocationUpdates(locationRequest, locationCallback, Looper.myLooper());
 
     }
 
