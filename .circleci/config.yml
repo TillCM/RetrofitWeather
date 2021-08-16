@@ -1,4 +1,4 @@
-version: 2
+version: 2.1
 jobs:
   build:
     working_directory: ~/code
@@ -68,3 +68,13 @@ jobs:
            -Dsonar.login="$SONAR_TOKEN" \
            -Dsonar.branch.name="$SONAR_BRANCH" \
            -Dsonar.sources="."
+
+workflows:
+  android-build-and-test:
+    jobs:
+      - build
+      - sonarqube
+     
+
+           
+           
