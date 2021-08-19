@@ -67,7 +67,7 @@ jobs:
            -Dsonar.exclusions="**/gradle/**,**/.circleci/**,**/.github/**,**/.idea/**" \
            -Dsonar.login="$SONAR_TOKEN" \
            -Dsonar.branch.name="$SONAR_BRANCH" \
-           -Dsonar.sources="."
+           -Dsonar.sources="app/**"
 
 workflows:
   android-build-and-test:
