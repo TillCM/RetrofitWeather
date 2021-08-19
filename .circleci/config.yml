@@ -54,6 +54,7 @@ jobs:
       - run: apk --no-cache add --update openssh git curl
       - checkout
       - run: find .
+      - run: pwd
       - attach_workspace:
           at: ~/workspace
       - run: |
@@ -67,7 +68,7 @@ jobs:
            -Dsonar.exclusions="**/gradle/**,**/.circleci/**,**/.github/**,**/.idea/**" \
            -Dsonar.login="$SONAR_TOKEN" \
            -Dsonar.branch.name="$SONAR_BRANCH" \
-           -Dsonar.sources="./app/**" \
+           -Dsonar.sources="app/**" \
            -X
 
 workflows:
