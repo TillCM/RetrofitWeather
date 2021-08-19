@@ -55,6 +55,7 @@ jobs:
       - checkout
       - run: find .
       - run: pwd
+      - run: ls -R /tmp/build
       - attach_workspace:
           at: ~/workspace
       - run: |
@@ -68,7 +69,8 @@ jobs:
            -Dsonar.exclusions="**/gradle/**,**/.circleci/**,**/.github/**,**/.idea/**,**/build/**" \
            -Dsonar.login="$SONAR_TOKEN" \
            -Dsonar.branch.name="$SONAR_BRANCH" \
-           -Dsonar.sources="/tmp/build/app/**" 
+           -Dsonar.projectBaseDir="/tmp/build/app" \
+           -Dsonar.sources="." \
            -X
 
 workflows:
