@@ -1,5 +1,9 @@
 apply plugin: 'com.android.application'
 
+plugins {
+  id "org.sonarqube" version "3.3"
+}
+
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.3"
@@ -17,6 +21,14 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+}
+
+sonarqube {
+  properties {
+    property "sonar.projectKey", "retroweather"
+    property "sonar.organization", "tillcm"
+    property "sonar.host.url", "https://sonarcloud.io"
+  }
 }
 
 dependencies {
