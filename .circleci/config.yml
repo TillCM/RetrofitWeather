@@ -65,7 +65,7 @@ jobs:
            
            bundle install
            
-           sudo gem install fastlane
+         
             ./gradlew bundleRelease
 
   
