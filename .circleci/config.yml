@@ -59,6 +59,7 @@ jobs:
           command: |
            ruby --version
            gem install bundler
+           touch ./Gemfile
            bundle install
             ./gradlew bundleRelease
 
