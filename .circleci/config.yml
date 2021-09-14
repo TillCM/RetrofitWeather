@@ -60,8 +60,8 @@ jobs:
            ruby --version
            gem install bundler
            touch ./Gemfile
-           printf 'source "https://rubygems.org"'> ./Gemfile
-           printf 'gem "fastlane"'> ./Gemfile
+           printf 'source "https://rubygems.org"'>> ./Gemfile
+           printf 'gem "fastlane"'>> ./Gemfile
            
            
            bundle install
