@@ -59,9 +59,10 @@ jobs:
           command: |
            ruby --version
            gem install bundler
-           touch ./Gemfile
-           printf 'source "https://rubygems.org"'>> ./Gemfile
-           printf 'gem "fastlane"'>> ./Gemfile
+          
+           { echo 'source "https://rubygems.org"'
+           
+            echo 'gem "fastlane"'}>> ./Gemfile
            
            
            bundle install
