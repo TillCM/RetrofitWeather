@@ -58,6 +58,8 @@ jobs:
           name: Deploy
           command: |
            ruby --version
+           gem install bundler
+           bundle install
             ./gradlew bundleRelease
 
   
